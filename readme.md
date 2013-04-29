@@ -1,6 +1,6 @@
 # UserSettings
 
-## Portable Persistent Local Settings Storage for Python
+## Portable Local Settings Storage for Python
 
 - Automatic storage of settings information in a simple flat text file ([ConfigParser][] format)
 - Automatically stored in an OS-appropriate location. For example, on OS X, the settings for an app with the chosen identifier "`com.example.apps.UserSettingsTest`" would be stored in `~/Library/Application Support/com.example.apps.UserSettingsTest/settings.cfg`
