@@ -22,7 +22,7 @@ CONF.add_setting("floatie", float, default=3.14159)
 CONF.add_setting("stringie", str, default="s")
 CONF.add_setting("boolie", bool, default=True)
 
-#### Load the stored settings (if they exist)
+#### Load any stored settings that might exist
 CONF.load_settings()
 
 #### Access the settings like attributes
@@ -50,7 +50,8 @@ This module is licensed under a BSD-style licence. See license.txt for details.
 
 ## Notes
 
-Note: Not yet a proper package. Requires the [appdirs][] module from pypi. 
+- *Not yet a proper python package.*
+- Requires the [appdirs][] module from pypi. 
 
 
 [ConfigParser]: http://docs.python.org/2/library/configparser.html
