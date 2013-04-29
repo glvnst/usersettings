@@ -52,7 +52,8 @@ This module is licensed under a BSD-style licence. See license.txt for details.
 
 - *Not yet a proper python package.*
 - Requires the [appdirs][] module from pypi. 
-
+- Created after asking this [question on stack overflow](http://stackoverflow.com/questions/16275031/portable-settings-and-app-data-storage-in-python)
+- UserSettings not your cup of tea? Have a look at [configmgr](https://bitbucket.org/grantor61/configmgr), an earlier project which also leverages appdirs (which I helpfully discovered only *after* creating this module)
 
 [ConfigParser]: http://docs.python.org/2/library/configparser.html
 [argparse]: http://docs.python.org/2/library/argparse.html
