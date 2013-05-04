@@ -8,7 +8,7 @@ import ConfigParser
 import appdirs
 
 
-class UserSettings(object):
+class Settings(object):
     """ Provide interface for portable persistent user editable settings """
     app_id = None
     settings_directory = None
@@ -83,8 +83,8 @@ class UserSettings(object):
     def __getattr__(self, setting_name):
         """ Provide attribute-based access to stored config data """
         # Quick short-circuit to allow self.thing to work
-        if setting_name in dir(UserSettings):
-            return super(UserSettings, self).__getattr__(setting_name)
+        if setting_name in dir(Settings):
+            return super(Settings, self).__getattr__(setting_name)
 
         try:
             return self._settings_store[setting_name]
@@ -95,9 +95,9 @@ class UserSettings(object):
         """ Provide attribute-based access to stored config data """
 
         # Quick short-circuit to allow self.thing = blah to work
-        if setting_name in dir(UserSettings):
-            return super(UserSettings, self).__setattr__(setting_name,
-                                                         setting_value)
+        if setting_name in dir(Settings):
+            return super(Settings, self).__setattr__(setting_name,
+                                                     setting_value)
 
         try:
             if setting_name not in self._settings_types:

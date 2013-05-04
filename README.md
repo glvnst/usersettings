@@ -1,4 +1,4 @@
-# UserSettings
+# usersettings
 
 ## Portable Local Settings Storage for Python
 
@@ -11,10 +11,10 @@
 The following example code shows the entire interface. This program will change its output each time it is run.
 
 ```
-from UserSettings import UserSettings
+from usersettings import Settings
 
 #### Choose identifier for your app
-CONF = UserSettings('com.example.apps.UserSettingsTest')
+CONF = Settings('com.example.apps.UserSettingsTest')
 
 #### Create the individual settings keys, types, and default values
 CONF.add_setting("counter", int, default=0)
@@ -53,7 +53,7 @@ This module is licensed under a BSD-style licence. See license.txt for details.
 - *Not yet a proper python package.*
 - Requires the [appdirs][] module from pypi. 
 - Created after asking this [question on stack overflow](http://stackoverflow.com/questions/16275031/portable-settings-and-app-data-storage-in-python)
-- UserSettings not your cup of tea? Have a look at [configmgr](https://bitbucket.org/grantor61/configmgr), an earlier project which also leverages appdirs (which I helpfully discovered only *after* creating this module)
+- usersettings not your cup of tea? Have a look at [configmgr](https://bitbucket.org/grantor61/configmgr), an earlier project which also leverages appdirs (which I helpfully discovered only *after* creating this module)
 
 [ConfigParser]: http://docs.python.org/2/library/configparser.html
 [argparse]: http://docs.python.org/2/library/argparse.html
