@@ -6,7 +6,7 @@ setup(
     name = "UserSettings",
     version = "1.0",
     description = "Portable Local Settings Storage",
-    url = "https://github.com/glvnst/UserSettings",
+    url = "https://github.com/glvnst/usersettings",
     author = "Ben Burke",
     author_email = "benburke42@gmail.com",
     classifiers = [

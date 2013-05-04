@@ -41,16 +41,14 @@ CONF.save_settings()
 
 ## License
 
-This module is licensed under a BSD-style licence. See license.txt for details.
+This module is licensed under a BSD-style licence. See LICENSE.txt for details.
 
 ## To do
 
-- Make into a proper python package
-- Add to pypi
+- Unit tests (more for my benefit than for this package)
 
 ## Notes
 
-- *Not yet a proper python package.*
 - Requires the [appdirs][] module from pypi. 
 - Created after asking this [question on stack overflow](http://stackoverflow.com/questions/16275031/portable-settings-and-app-data-storage-in-python)
 - usersettings not your cup of tea? Have a look at [configmgr](https://bitbucket.org/grantor61/configmgr), an earlier project which also leverages appdirs (which I helpfully discovered only *after* creating this module)
