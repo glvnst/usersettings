@@ -15,7 +15,7 @@ page <https://github.com/glvnst/usersettings>`_.
 
 setup(
     name = "usersettings",
-    version = "1.0.4",
+    version = "1.0.6",
     author = "Ben Burke",
     author_email = "benburke42@gmail.com",
     url = "https://github.com/glvnst/usersettings",
@@ -34,7 +34,6 @@ setup(
     license = "https://raw.github.com/glvnst/usersettings/master/LICENSE.txt",
 
     py_modules=['usersettings'],
-    package_data = {'': ['*.txt', '*.md', 'docs/*.txt', 'docs/*.md',
-                         'examples/*.py']},
+    package_data = {'': ['*.md', 'docs/*.txt', 'examples/*.py']},
     install_requires = ['appdirs>=1.2'],
 )

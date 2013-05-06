@@ -1,1 +1,1 @@
-include *.txt *.md docs/*.txt docs/*.md examples/*.py
+include *.md docs/*.txt examples/*.py
