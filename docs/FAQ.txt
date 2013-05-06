@@ -1,0 +1,5 @@
+Q: Why does this file exist if there haven't been *any* questions asked (let
+   alone *frequent* ones)?
+A: This file is a stub, to be used if anyone ever does ask any questions. Its
+   presence also makes this package more compliant with certain packaging
+   standards, which is admittedly a little gross.

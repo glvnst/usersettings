@@ -1,0 +1,4 @@
+Ben Burke created the initial version of this software.
+
+If you submit any patches or fork the project, please include an amendment to
+this file with your name.

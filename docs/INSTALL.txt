@@ -1,0 +1,13 @@
+usersettings installation
+
+This package is hosted on pypi. The easiest way to install it is to use it to
+install using pip.
+
+First, get pip. See here:
+http://www.pip-installer.org/en/latest/installing.html
+
+Then just:
+pip install usersettings
+
+To upgrade an existing installation:
+pip install --upgrade usersettings

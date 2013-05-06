@@ -1,0 +1,3 @@
+2013-04-29 1.0.x (beta) glvnst
+	* Initial version(s). Submitted to pypi. Generating docs.
+

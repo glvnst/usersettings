@@ -1,0 +1,6 @@
+Thanks to everyone who considers using this project.
+
+- Thanks to Trent Mick and Sridhar Ratnakumar for making the appdirs module:
+https://pypi.python.org/pypi/appdirs
+
+- Thanks to the author(s) of the native python configparser module.

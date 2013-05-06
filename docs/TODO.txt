@@ -1,0 +1,2 @@
+- Implement unit tests (more for my benefit than for this tiny package)
+- Consider cleaning up the type-specific parsing

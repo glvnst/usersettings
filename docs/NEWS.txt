@@ -1,0 +1,5 @@
+2013-05-04
+	Project now hosted on pypi: https://pypi.python.org/pypi/usersettings
+
+2013-04-29
+	Project hosted on github: https://github.com/glvnst/usersettings
