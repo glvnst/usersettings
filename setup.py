@@ -34,6 +34,7 @@ setup(
     license = "https://raw.github.com/glvnst/usersettings/master/LICENSE.txt",
 
     py_modules=['usersettings'],
-    package_data = {'': ['*.txt', '*.md']},
+    package_data = {'': ['*.txt', '*.md', 'docs/*.txt', 'docs/*.md',
+                         'examples/*.py']},
     install_requires = ['appdirs>=1.2'],
 )

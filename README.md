@@ -3,7 +3,10 @@
 ## Portable Local Settings Storage for Python
 
 - Automatic storage of settings information in a simple flat text file ([ConfigParser][] format)
-- Automatically stored in an OS-appropriate location. For example, on OS X, the settings for an app with the chosen identifier "`com.example.apps.UserSettingsTest`" would be stored in `~/Library/Application Support/com.example.apps.UserSettingsTest/settings.cfg`
+- Automatically stored in an OS-appropriate location (via [appdirs][]). For example, the settings for an app with the chosen identifier `com.example.apps.UserSettingsTest` would be stored in:
+    - `~/Library/Application Support/com.example.apps.UserSettingsTest/settings.cfg` on OS X
+    - `~/.config/com.example.apps.UserSettingsTest/settings.cfg` on Linux
+    - `C:\Documents and Settings\<User>\Application Data\com.example.apps.UserSettingsTest\com.example.apps.UserSettingsTest\settings.cfg` (or an equivalent location depending on various factors) on Windows
 - Interface modeled on the [argparse][] module.
 
 ## Example:
@@ -43,13 +46,9 @@ CONF.save_settings()
 
 This module is licensed under a BSD-style licence. See LICENSE.txt for details.
 
-## To do
-
-- Unit tests (more for my benefit than for this package)
-
 ## Notes
 
-- Requires the [appdirs][] module from pypi. 
+- Uses the [appdirs][] module from pypi. 
 - Created after asking this [question on stack overflow](http://stackoverflow.com/questions/16275031/portable-settings-and-app-data-storage-in-python)
 - usersettings not your cup of tea? Have a look at [configmgr](https://bitbucket.org/grantor61/configmgr), an earlier project which also leverages appdirs (which I helpfully discovered only *after* creating this module)
 
