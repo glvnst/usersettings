@@ -1,3 +1,14 @@
 2013-04-29 1.0.x (beta) glvnst
 	* Initial version(s). Submitted to pypi. Generating docs.
+	* Removed quantum-processing function to avoid potential looping issue
+
+2013-05-31 1.0.7 (beta) glvnst
+	* Settings is now a subclass of dict. Attribute-based access still works.
+	* The Settings._settings_store attribute has been removed
+	* Dict-based subscript access is now available
+	* ast module literal parsing is now used for settings that are of these
+	  types: dict, list, and set. So you can use these. One warning: if your
+	  user makes non-conforming changes to the stored settings file, loading
+	  your settings will fail outright
+	* Removed quantum-processing function to avoid potential looping issue
 

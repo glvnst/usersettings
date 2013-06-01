@@ -15,7 +15,7 @@ page <https://github.com/glvnst/usersettings>`_.
 
 setup(
     name = "usersettings",
-    version = "1.0.6",
+    version = "1.0.7",
     author = "Ben Burke",
     author_email = "benburke42@gmail.com",
     url = "https://github.com/glvnst/usersettings",

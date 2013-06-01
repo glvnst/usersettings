@@ -4,16 +4,16 @@ Provide interface for persistent portable editable user settings
 """
 import os
 import ConfigParser
+import ast
 
 import appdirs
 
 
-class Settings(object):
+class Settings(dict):
     """ Provide interface for portable persistent user editable settings """
     app_id = None
     settings_directory = None
     settings_file = None
-    _settings_store = {}
     _settings_types = {}
     _settings_defaults = {}
 
@@ -28,6 +28,7 @@ class Settings(object):
                                                         roaming=True)
         self.settings_file = os.path.join(self.settings_directory,
                                           "settings.cfg")
+        super(Settings, self).__init__()
 
     def add_setting(self, setting_name, setting_type=str, default=None):
         """ Define a settings option (and default value) """
@@ -40,7 +41,7 @@ class Settings(object):
         for key, value in self._settings_defaults.items():
             if key not in self._settings_types:
                 self._settings_types[key] = str
-            self._settings_store[key] = self._settings_types[key](value)
+            super(Settings, self).__setitem__(key, value)
 
         # Load the stored values
         parser = ConfigParser.RawConfigParser()
@@ -50,21 +51,23 @@ class Settings(object):
                 for key, value in parser.items('settings'):
                     if key not in self._settings_types:
                         self._settings_types[key] = str
+                    adjusted_value = value
                     # There are some special helper functions in ConfigParser
                     # for ints, floats, and booleans.
                     if issubclass(self._settings_types[key], bool):
                         # This needs to appear before int
-                        self._settings_store[key] = parser.getboolean(
-                            'settings', key)
+                        adjusted_value = parser.getboolean('settings', key)
                     elif issubclass(self._settings_types[key], int):
-                        self._settings_store[key] = parser.getint(
-                            'settings', key)
+                        adjusted_value = parser.getint('settings', key)
                     elif issubclass(self._settings_types[key], float):
-                        self._settings_store[key] = parser.getfloat(
-                            'settings', key)
+                        adjusted_value = parser.getfloat('settings', key)
+                    elif issubclass(self._settings_types[key],
+                                    (dict, list, set)):
+                        adjusted_value = self._settings_types[key](
+                            ast.literal_eval(value))
                     else:
-                        self._settings_store[key] = \
-                            self._settings_types[key](value)
+                        adjusted_value = self._settings_types[key](value)
+                    super(Settings, self).__setitem__(key, adjusted_value)
         except IOError:
             # No config file exists, or it is invalid
             pass
@@ -75,34 +78,26 @@ class Settings(object):
             os.makedirs(self.settings_directory, 0755)
         parser = ConfigParser.RawConfigParser()
         parser.add_section('settings')
-        for key, value in self._settings_store.items():
+        for key, value in self.items():
             parser.set('settings', key, value)
         with open(self.settings_file, 'wb') as settings_fp:
             parser.write(settings_fp)
 
     def __getattr__(self, setting_name):
         """ Provide attribute-based access to stored config data """
-        # Quick short-circuit to allow self.thing to work
-        if setting_name in dir(Settings):
-            return super(Settings, self).__getattr__(setting_name)
-
         try:
-            return self._settings_store[setting_name]
+            return super(Settings, self).__getitem__(setting_name)
         except KeyError:
             raise AttributeError
 
     def __setattr__(self, setting_name, setting_value):
         """ Provide attribute-based access to stored config data """
-
-        # Quick short-circuit to allow self.thing = blah to work
-        if setting_name in dir(Settings):
-            return super(Settings, self).__setattr__(setting_name,
-                                                     setting_value)
-
-        try:
-            if setting_name not in self._settings_types:
-                self._settings_types[setting_name] = str
-            self._settings_store[setting_name] = \
-                self._settings_types[setting_name](setting_value)
-        except:
-            raise AttributeError
+        if setting_name in self._settings_defaults:
+            # This value will go to the internal dict
+            try:
+                return super(Settings, self).__setitem__(setting_name,
+                                                         setting_value)
+            except KeyError:
+                raise AttributeError
+        # This value will be an attribute of self
+        return super(Settings, self).__setattr__(setting_name, setting_value)

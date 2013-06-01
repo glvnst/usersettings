@@ -1,4 +1,4 @@
-# usersettings
+# usersettings v1.0.7
 
 ## Portable Local Settings Storage for Python
 
@@ -13,34 +13,42 @@
 
 The following example code shows the entire interface. This program will change its output each time it is run.
 
-```
-from usersettings import Settings
+    #!/usr/bin/python
+    from usersettings import Settings
+    import time
+    
+    # Identify for your app, specify what settings you have then
+    # load em', use em', save em'
+    
+    s = Settings('com.example.apps.UserSettingsTest')    
+    s.add_setting("counter", int, default=0)
+    s.add_setting("animal", str, default="turtles")
+    s.add_setting("runtimes", list, [])
+    s.load_settings() # loads anything that might be saved
+    
+    s.counter += 1
+    if s.counter > 2:
+        # Tired of turtles?
+        s.animal = "the Rabbit of Caerbannog"
+    s.runtimes.append(time.time())
+    s.save_settings()
+    
+    print "I've run {0.counter} time(s). I like {0.animal}!".format(s)
+    print "I've been launched at these times: ",
+    print ", ".join([str(x) for x in s.runtimes])
 
-#### Choose identifier for your app
-CONF = Settings('com.example.apps.UserSettingsTest')
+Running this example produces:
 
-#### Create the individual settings keys, types, and default values
-CONF.add_setting("counter", int, default=0)
-CONF.add_setting("floatie", float, default=3.14159)
-CONF.add_setting("stringie", str, default="s")
-CONF.add_setting("boolie", bool, default=True)
-
-#### Load any stored settings that might exist
-CONF.load_settings()
-
-#### Access the settings like attributes
-print "Counter:",  CONF.counter
-print "Floatie:",  CONF.floatie
-print "Stringie:", CONF.stringie
-print "Boolie:",   CONF.boolie
-CONF.counter += 1
-CONF.floatie *= 2
-CONF.stringie = CONF.stringie + str(CONF.counter)
-CONF.boolie = not CONF.boolie
-
-#### Optionally save any changes
-CONF.save_settings()
-```
+    $ python ./example.py 
+    I've run 1 time(s). I like turtles!
+    I've been launched at these times:  1370046713.82
+    $ python ./example.py 
+    I've run 2 time(s). I like turtles!
+    I've been launched at these times:  1370046713.82, 1370046716.99
+    $ python ./example.py 
+    I've run 3 time(s). I like the Rabbit of Caerbannog!
+    I've been launched at these times:  1370046713.82, 1370046716.99, 1370046719.49
+    $ 
 
 ## License
 
