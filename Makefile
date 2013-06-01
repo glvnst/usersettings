@@ -12,10 +12,10 @@ publish:
 	python ./setup.py register sdist bdist_egg upload
 
 check:
-	cheesecake_index -v --name=UserSettings
+	cheesecake_index -v --name=usersettings
 
 clean:
 	python ./setup.py clean
-	rm -rf UserSettings.egg-info dist build
+	rm -rf usersettings.egg-info dist build
 
 
