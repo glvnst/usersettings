@@ -1,5 +1,9 @@
 # usersettings v1.0.7
 
+## 2020 Note
+
+After years of neglect, I'm going to try to get this package back into shape. If you use this package in your software, PLEASE open an issue with a link to your project. I need to write some tests and I want to make sure I'm capturing your use case. BTW if you're a good test writer, I'd love your help.
+
 ## Portable Local Settings Storage for Python
 
 - Automatic storage of settings information in a simple flat text file ([ConfigParser][] format)
