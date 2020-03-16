@@ -3,7 +3,10 @@
 Provide interface for persistent portable editable user settings
 """
 import os
-import ConfigParser
+try:
+	import ConfigParser
+except ImportError:
+	import configparser as ConfigParser
 import ast
 
 import appdirs
@@ -75,12 +78,12 @@ class Settings(dict):
     def save_settings(self):
         """ Write the settings data to disk """
         if not os.path.exists(self.settings_directory):
-            os.makedirs(self.settings_directory, 0755)
+            os.makedirs(self.settings_directory, 0o755)
         parser = ConfigParser.RawConfigParser()
         parser.add_section('settings')
         for key, value in self.items():
             parser.set('settings', key, value)
-        with open(self.settings_file, 'wb') as settings_fp:
+        with open(self.settings_file, 'w') as settings_fp:
             parser.write(settings_fp)
 
     def __getattr__(self, setting_name):
