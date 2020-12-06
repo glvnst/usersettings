@@ -1,6 +1,6 @@
 #!/usr/bin/python
 """ Setup the setup """
-from setuptools import setup
+import setuptools
 
 LONG_DESCRIPTION = """
 usersettings
@@ -13,9 +13,12 @@ For more information, please refer to README.md or the `usersettings github
 page <https://github.com/glvnst/usersettings>`_.
 """
 
-setup(
+with open("VERSION", "r") as fh:
+    VERSION = fh.read().strip()
+
+setuptools.setup(
     name="usersettings",
-    version="1.0.7",
+    version=VERSION,
     author="Ben Burke",
     author_email="benburke42@gmail.com",
     url="https://github.com/glvnst/usersettings",
