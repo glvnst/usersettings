@@ -3,10 +3,11 @@
 Provide interface for persistent portable editable user settings
 """
 import os
+
 try:
-	import ConfigParser
+    import ConfigParser
 except ImportError:
-	import configparser as ConfigParser
+    import configparser as ConfigParser
 import ast
 
 import appdirs
@@ -14,6 +15,7 @@ import appdirs
 
 class Settings(dict):
     """ Provide interface for portable persistent user editable settings """
+
     app_id = None
     settings_directory = None
     settings_file = None
@@ -26,11 +28,10 @@ class Settings(dict):
         1034 identifier, e.g. com.example.apps.thisapp
         """
         self.app_id = app_id
-        self.settings_directory = appdirs.user_data_dir(app_id,
-                                                        appauthor=app_id,
-                                                        roaming=True)
-        self.settings_file = os.path.join(self.settings_directory,
-                                          "settings.cfg")
+        self.settings_directory = appdirs.user_data_dir(
+            app_id, appauthor=app_id, roaming=True
+        )
+        self.settings_file = os.path.join(self.settings_directory, "settings.cfg")
         super(Settings, self).__init__()
 
     def add_setting(self, setting_name, setting_type=str, default=None):
@@ -49,9 +50,9 @@ class Settings(dict):
         # Load the stored values
         parser = ConfigParser.RawConfigParser()
         try:
-            with open(self.settings_file, 'r') as settings_fp:
+            with open(self.settings_file, "r") as settings_fp:
                 parser.readfp(settings_fp)
-                for key, value in parser.items('settings'):
+                for key, value in parser.items("settings"):
                     if key not in self._settings_types:
                         self._settings_types[key] = str
                     adjusted_value = value
@@ -59,15 +60,15 @@ class Settings(dict):
                     # for ints, floats, and booleans.
                     if issubclass(self._settings_types[key], bool):
                         # This needs to appear before int
-                        adjusted_value = parser.getboolean('settings', key)
+                        adjusted_value = parser.getboolean("settings", key)
                     elif issubclass(self._settings_types[key], int):
-                        adjusted_value = parser.getint('settings', key)
+                        adjusted_value = parser.getint("settings", key)
                     elif issubclass(self._settings_types[key], float):
-                        adjusted_value = parser.getfloat('settings', key)
-                    elif issubclass(self._settings_types[key],
-                                    (dict, list, set)):
+                        adjusted_value = parser.getfloat("settings", key)
+                    elif issubclass(self._settings_types[key], (dict, list, set)):
                         adjusted_value = self._settings_types[key](
-                            ast.literal_eval(value))
+                            ast.literal_eval(value)
+                        )
                     else:
                         adjusted_value = self._settings_types[key](value)
                     super(Settings, self).__setitem__(key, adjusted_value)
@@ -80,10 +81,10 @@ class Settings(dict):
         if not os.path.exists(self.settings_directory):
             os.makedirs(self.settings_directory, 0o755)
         parser = ConfigParser.RawConfigParser()
-        parser.add_section('settings')
+        parser.add_section("settings")
         for key, value in self.items():
-            parser.set('settings', key, value)
-        with open(self.settings_file, 'w') as settings_fp:
+            parser.set("settings", key, value)
+        with open(self.settings_file, "w") as settings_fp:
             parser.write(settings_fp)
 
     def __getattr__(self, setting_name):
@@ -98,8 +99,7 @@ class Settings(dict):
         if setting_name in self._settings_defaults:
             # This value will go to the internal dict
             try:
-                return super(Settings, self).__setitem__(setting_name,
-                                                         setting_value)
+                return super(Settings, self).__setitem__(setting_name, setting_value)
             except KeyError:
                 raise AttributeError
         # This value will be an attribute of self

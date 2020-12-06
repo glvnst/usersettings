@@ -21,18 +21,18 @@ previously identified if they exist. (Don't bother checking first, just always
 call this method.)
 
 The previously-named settings can be accessed and changed as attributes of the
-Settings object. 
+Settings object.
 
 The save_settings call saves any changes to disk.
 """
 
 from usersettings import Settings
 
-CONF = Settings('com.example.apps.UserSettingsExample')
+CONF = Settings("com.example.apps.UserSettingsExample")
 CONF.add_setting("counter", int, default=0)
 CONF.load_settings()
 
-print "Counter:",  CONF.counter
+print("Counter:", CONF.counter)
 CONF.counter += 1
 
 CONF.save_settings()
