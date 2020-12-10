@@ -1,1 +1,1 @@
-include *.md docs/*.txt examples/*.py
+include *.md *.txt VERSION docs/*.txt examples/*.py
