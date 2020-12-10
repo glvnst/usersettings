@@ -1,3 +1,6 @@
+Numeric references in this file refer to issues and PRs in this github
+repo <https://github.com/glvnst/usersettings/>.
+
 2013-04-29 1.0.x (beta) glvnst
 	* Initial version(s). Submitted to pypi. Generating docs.
 	* Removed quantum-processing function to avoid potential looping issue
@@ -12,3 +15,15 @@
 	  your settings will fail outright
 	* Removed quantum-processing function to avoid potential looping issue
 
+2020-12-06 1.1.4 (beta) glvnst
+	* added python3 support fix #1 / #2 - thanks @zachdeibert and @mgrbyte
+	* added github actions support in #6 #7
+	* changed default branch to main
+	* added a basic unit test and code formatting check #8
+
+2020-12-10 1.1.5 (beta) glvnst
+	* incorporates fix for #10 wherein the `VERSION` file was missing from the
+	  pypi sdist. Thanks @djmattyg007
+	* incorporates fix for #11 by adding python 3.9 testing to the github
+	  actions CI/CD settings. Thanks again to @djmattyg007
+	* minor documentation tweaks

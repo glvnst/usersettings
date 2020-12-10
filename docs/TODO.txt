@@ -1,2 +1,3 @@
-- Implement unit tests (more for my benefit than for this tiny package)
+- Implement more unit tests
 - Consider cleaning up the type-specific parsing
+- Add type annotations

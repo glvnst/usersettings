@@ -7,10 +7,10 @@ usersettings
 ------------
 "usersettings" is a python module for easily managing persistent settings
 using an editable format and stored in an OS-appropriate location
-(windows/os x/linux are supported).
+(windows/macOS/unix are supported).
 
 For more information, please refer to README.md or the `usersettings github
-page <https://github.com/glvnst/usersettings>`_.
+page <https://github.com/glvnst/usersettings>`.
 """
 
 with open("VERSION", "r") as fh:
